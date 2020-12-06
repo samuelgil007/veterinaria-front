@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Registro de citas
+            </div>
+            <div class="card-body">
+                <form (submit)="submit()" [formGroup]="validatorGroup">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Tipo</label>
+                        <select
+                            [class.is-invalid]="validatorGroup.get('type').invalid && validatorGroup.get('type').touched"
+                            [(ngModel)]="cita.type" name="type" class="form-control" id="type" formControlName="type"
+                            (change)="actualizarEmpleado()">
+                            <div *ngIf="(type.invalid && type.touched) || type.dirty">
+                                <small *ngIf="type.errors?.required" class="text-danger">Debes asignarle un tipo de
+                                    cita</small>
+                            </div>
+                            <option>Consulta</option>
+                            <option>Operacion</option>
+                            <option>Estetica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Doctor</label>
+                        <select
+                            [class.is-invalid]="validatorGroup.get('type').invalid && validatorGroup.get('type').touched"
+                            name="type" class="form-control" id="type" formControlName="type">
+                            <div *ngIf="(type.invalid && type.touched) || type.dirty">
+                                <small *ngIf="type.errors?.required" class="text-danger">Debes asignarle un
+                                    doctor</small>
+                            </div>
+                            <ng-container *ngIf="empleados.length > 0">
+                                <option *ngFor="let empleado of empleados" [Click]="setVet(empleado.name)">
+                                    {{empleado.name}}
+                                </option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre de la mascota:</label>
+                        <input
+                            [class.is-invalid]="validatorGroup.get('name').invalid && validatorGroup.get('name').touched"
+                            type="text" [(ngModel)]="cita.name" name="name" class="form-control"
+                            placeholder="nombre  de la mascota" formControlName="name" autofocus>
+                        <div *ngIf="(name.invalid && name.touched) || name.dirty">
+                            <small *ngIf="name.errors?.required" class="text-danger">El nombre es requerido</small>
+                            <small *ngIf="name.errors?.pattern" class="text-danger">Nombre solo en minusculas</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nombre del dueño:</label>
+                        <input
+                            [class.is-invalid]="validatorGroup.get('letras').invalid && validatorGroup.get('letras').touched"
+                            type="text" [(ngModel)]="cita.name_owner" name="name" class="form-control"
+                            placeholder="nombre  de la mascota" formControlName="letras" autofocus>
+                        <div *ngIf="(letras.invalid && name.touched) || letras.dirty">
+                            <small *ngIf="letras.errors?.required" class="text-danger">El nombre es requerido</small>
+                            <small *ngIf="letras.errors?.pattern" class="text-danger">Nombre solo en letras</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="id_owner">Cedula del dueño:</label>
+                        <input
+                            [class.is-invalid]="validatorGroup.get('id_owner').invalid && validatorGroup.get('id_owner').touched"
+                            type="text" [(ngModel)]="cita.id_owner" name="id_owner" class="form-control"
+                            placeholder="Cédula del dueño" formControlName="id_owner">
+                        <div *ngIf="(cedula.invalid && cedula.touched) || cedula.dirty">
+                            <small *ngIf="cedula.errors?.required" class="text-danger">La cédula es requerida</small>
+
+                            <small *ngIf="cedula.errors?.pattern" class="text-danger">Por favor, ingresa una cédula
+                                correcta</small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dateIn">Fecha de la cita:</label>
+                        <input
+                            [class.is-invalid]="!validatorGroup.get('dateIn').dirty"
+                            type="datetime-local" [(ngModel)]="cita.date" name="dateIn" class="form-control"
+                            placeholder="Fecha de Ingreso" formControlName="dateIn" autofocus>
+                        <div *ngIf="(dateIn.invalid && dateIn.touched) || dateIn.dirty">
+                            <small *ngIf="dateIn.errors?.required" class="text-danger">Debe ingresar la fecha de
+                                la cita</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="validatorGroup.invalid"
+                        style="background-color:red">
+                        Registrar
+                    </button>
+                    <label *ngIf="error" style="color:red; text-align: center;"> Hay algun campo vacio o
+                        incorrecto</label>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

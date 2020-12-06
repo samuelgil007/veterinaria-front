@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-md-7 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Cita
+            </div>
+            <ng-template [ngIf]="cita">
+                <div class="card-body">
+                    <p><b>Nombre: </b> {{cita.name}} <b>Raza: </b> {{mascota.raza}} <b>Nacimiento: </b> {{mascota.birth}} </p> 
+                    <p><b>Tipo de mascota: </b> {{mascota.type}} </p>
+                    <p><b>Dueño: </b> {{cita.name_owner}}  <b>Tipo de cita: </b> {{cita.type}}</p>
+                    <p><b>Fecha de la cita: </b> {{cita.date}} </p>
+                    <p><b>Diagnostico: </b> </p>
+                    <p> <textarea class="col-md-12 mx-auto" style="height:150px;" [(ngModel)]="cita.diagnostico"
+                            matInput></textarea></p>
+                    <button type="submit" color="elegant" class="btn btn-primary" style="background-color:red"
+                         (click)= "terminarCita()" [disabled]="cita.diagnostico == '' " mdbWavesEffect>
+                        Terminar cita
+                    </button>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+
+    <div class="col-md-5 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Historia
+            </div>
+            <ng-template [ngIf]="historia.length > 0" [ngIfElse]="historiavacia">
+                <div class="card-body" *ngFor="let hist of historia">
+                    <div class="container">
+                        <p><b>Nombre: </b> {{hist.name}}</p>
+                        <p><b>Tipo de cita: </b> {{hist.type}}</p>
+                        <p><b>Fecha de la cita: </b> {{hist.date}} </p>
+                        <p><b>Diagnostico: </b> {{hist.diagnostico}}</p>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-template #historiavacia>
+                <div class="card-body" style="background-color: aqua;">
+                    NO TIENE HISTORIA
+                </div>
+            </ng-template>
+        </div>
+
+    </div>
+</div>

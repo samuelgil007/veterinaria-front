@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+    background-image: url("src/assets/images/background.jpg") ;
+    background-size:auto;
+
+    background-position: center center;
+  }
+
+  .prueba{
+      background-color: aquamarine;
+
+  }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                Lista de citas
+            </div>
+            <ng-template [ngIf]="citas.length > 0" [ngIfElse]="vacio">
+                <div class="card-body" *ngFor="let cita of citas">
+                  <b>Nombre: </b>  {{cita.name}}  <b>Dueño: </b>  {{cita.name_owner}} 
+                  <b>Tipo de cita: </b>  {{cita.type}} <b>Fecha: </b>  {{cita.date}}
+                  <button type="submit" color="elegant" class="btn btn-primary"
+                  style="background-color:red"[routerLink]="['/realizar-cita', cita._id]" mdbWavesEffect> 
+                  Comenzar cita
+              </button>
+                </div>
+            </ng-template>
+            <ng-template #vacio>
+                <div class="card-body" style="background-color: aqua;">
+                    NO TIENE CITAS ASIGNADAS
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
