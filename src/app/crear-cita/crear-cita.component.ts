@@ -91,7 +91,6 @@ export class CrearCitaComponent implements OnInit {
   submit() {
     this.cita.id_pet = this.cita.name+this.cita.id_owner; // id de la mascota
     this.cita._id = this.cita.name + this.cita.date; //id de la cita : nombre + fecha de la cita
-    console.log(this.cita);
 
     this.citaservice
       .registrar(this.cita)

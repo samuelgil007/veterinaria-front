@@ -66,7 +66,6 @@ export class RealizarCitaComponent implements OnInit {
 
   }
   terminarCita() {
-    console.log(this.cita);
     this.citaservice
       .realizarCita(this.cita._id, this.cita)
       .subscribe(
