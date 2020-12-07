@@ -32,7 +32,10 @@ export class CrearCitaComponent implements OnInit {
     type: new FormControl('', [
       Validators.required
     ]),
-    dateIn: new FormControl('', [
+    typeVet: new FormControl(null, [
+      Validators.required
+    ]),
+    dateIn: new FormControl(null, [
       Validators.required
     ])
   });
@@ -41,6 +44,9 @@ export class CrearCitaComponent implements OnInit {
     private readonly dialog: MatDialog) { }
   get dateIn() {
     return this.validatorGroup.get('dateIn');
+  }
+  get typeVet() {
+    return this.validatorGroup.get('typeVet');
   }
   get name() {
     return this.validatorGroup.get('name');
@@ -98,6 +104,7 @@ export class CrearCitaComponent implements OnInit {
       .subscribe(
         (res) => {
           this.openDialog(res.message);  
+          this.router.navigate(['/lista-citas']);
         },
         (err) => {
           this.openDialog(err["error"]["message"] );

@@ -77,6 +77,7 @@ export class CrearMascotaComponent implements OnInit {
       .subscribe(
         (res) => {
           this.openDialog(res.message);  
+          this.router.navigate(['/lista-citas']);
         },
         (err) => {
           this.openDialog(err["error"]["message"] );

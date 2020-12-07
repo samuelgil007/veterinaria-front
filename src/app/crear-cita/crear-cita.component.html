@@ -24,11 +24,11 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Doctor</label>
                         <select
-                            [class.is-invalid]="validatorGroup.get('type').invalid && validatorGroup.get('type').touched"
-                            name="name_vet" class="form-control" id="name_vet" formControlName="type"  [ngModel]="cita.name_vet" (change)="setVet($event.target.value)">
-                            <div *ngIf="(type.invalid && type.touched) || type.dirty">
-                                <small *ngIf="type.errors?.required" class="text-danger">Debes asignarle un
-                                    doctor</small>
+                            [class.is-invalid]="validatorGroup.get('typeVet').invalid && validatorGroup.get('typeVet').touched"
+                            name="name_vet" class="form-control" id="name_vet" formControlName="typeVet"  [ngModel]="cita.name_vet" (change)="setVet($event.target.value)">
+                            <div *ngIf="(typeVet.invalid && typeVet.touched) || typeVet.dirty">
+                                <small *ngIf="typeVet.errors?.required" class="text-danger">Debes asignarle un
+                                    veterinario</small>
                             </div>
                             <ng-container *ngIf="empleados.length > 0">
                                 <option *ngFor="let empleado of empleados" [value]="empleado.name">
