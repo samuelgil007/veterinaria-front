@@ -25,13 +25,13 @@
                         <label for="exampleFormControlSelect1">Doctor</label>
                         <select
                             [class.is-invalid]="validatorGroup.get('type').invalid && validatorGroup.get('type').touched"
-                            name="type" class="form-control" id="type" formControlName="type">
+                            name="name_vet" class="form-control" id="name_vet" formControlName="type"  [ngModel]="cita.name_vet" (change)="setVet($event.target.value)">
                             <div *ngIf="(type.invalid && type.touched) || type.dirty">
                                 <small *ngIf="type.errors?.required" class="text-danger">Debes asignarle un
                                     doctor</small>
                             </div>
                             <ng-container *ngIf="empleados.length > 0">
-                                <option *ngFor="let empleado of empleados" [Click]="setVet(empleado.name)">
+                                <option *ngFor="let empleado of empleados" [value]="empleado.name">
                                     {{empleado.name}}
                                 </option>
                             </ng-container>

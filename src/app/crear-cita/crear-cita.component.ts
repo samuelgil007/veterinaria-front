@@ -66,8 +66,8 @@ export class CrearCitaComponent implements OnInit {
     date: Date(),
     id_pet: ""
   }
-  setVet(emp){
-    this.cita.name_vet = emp;
+  setVet(pm){
+    this.cita.name_vet = pm
   }
   empleados = []
   actualizarEmpleado() {
